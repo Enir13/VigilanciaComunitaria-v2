@@ -10,7 +10,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.vigilanciacomunitaria.MainActivity
+import com.example.vigilanciacomunitaria.ui.MainActivity
 import com.example.vigilanciacomunitaria.R
 import com.example.vigilanciacomunitaria.service.PanicAlertService
 
