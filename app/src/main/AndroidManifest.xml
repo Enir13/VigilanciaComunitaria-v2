@@ -2,11 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vigilanciacomunitaria">
 
-    <!-- Permissões necessárias -->
+    <!-- Permissões básicas -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- Permissões de localização (para compartilhar posição em tempo real) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Permissões de internet (para Firebase e comunicação em tempo real) -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,9 +23,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VigilanciaComunitaria">
 
-        <!-- MainActivity -->
+        <!-- Tela principal do app -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,12 +33,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Serviço de Sirene -->
+        <!-- Serviço responsável por tocar o alarme de pânico -->
         <service
             android:name=".service.PanicAlertService"
             android:exported="false" />
 
-        <!-- Firebase Messaging Service -->
+        <!-- Serviço para receber mensagens do Firebase -->
         <service
             android:name=".service.MyFirebaseMessagingService"
             android:exported="false">
@@ -40,7 +47,7 @@
             </intent-filter>
         </service>
 
-        <!-- BroadcastReceiver para parar alarme ao clicar na notificação -->
+        <!-- Broadcast para parar o alarme ao interagir com notificação -->
         <receiver
             android:name=".service.StopAlertReceiver"
             android:exported="false" />
